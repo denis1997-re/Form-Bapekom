@@ -10,43 +10,42 @@ body {
     background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
     color: #37352f;
     margin: 0;
-    padding: 20px 15px;
+    padding: 10px; /* Jarak minimal ke pinggir layar HP */
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Mulai dari atas agar tidak terpotong di HP */
+    align-items: flex-start; /* Form mulai dari atas agar tidak terpotong */
     min-height: 100vh;
 }
 
-/* --- Container Utama --- */
+/* --- Container Kartu Utama --- */
 .glass-card-container {
-    background: #ffffff; /* Putih bersih agar teks sangat kontras */
+    background: rgba(255, 255, 255, 0.95); /* Putih bersih agar teks terbaca jelas */
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 550px;
-    overflow: hidden; /* Penting agar header logo rapi */
-    animation: slideUp 0.6s ease-out;
+    margin-top: 50px; /* Ruang untuk logo yang menonjol ke atas */
+    margin-bottom: 30px;
+    position: relative;
+    padding: 20px;
 }
 
-/* --- Header Bagian Logo (Area Tersendiri) --- */
-.form-header {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 30px 20px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
-}
-
+/* --- Logo: Sekarang menggunakan posisi absolut yang terkontrol --- */
 .profile-logo {
     width: 100px;
     height: 100px;
-    background: white;
+    background-color: white;
     border-radius: 50%;
-    margin: 0 auto; /* Tengah secara otomatis */
+    position: absolute;
+    top: -50px; /* Setengah logo keluar dari kartu */
+    left: 50%;
+    transform: translateX(-50%); /* Pas di tengah horizontal */
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    border: 3px solid #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 5px solid white;
+    z-index: 10;
 }
 
 .profile-logo img {
@@ -55,31 +54,34 @@ body {
     object-fit: cover;
 }
 
-/* --- Area Konten Form --- */
-.form-content {
-    padding: 30px 25px;
+/* --- Wrapper Form (Tally Wrapper) --- */
+.tally-wrapper {
+    padding-top: 40px; /* MEMBERI RUANG AGAR TULISAN TIDAK TERTUTUP LOGO */
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
-    margin: 0 0 20px 0;
     text-align: center;
+    margin-bottom: 25px;
     color: #1a1a1a;
+    line-height: 1.2;
 }
 
+/* Box Informasi */
 .info-box {
     background-color: #fff8f8;
     border-left: 4px solid #ff7070;
     padding: 15px;
     margin-bottom: 30px;
     font-size: 13px;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 
-.block {
-    margin-bottom: 25px;
-}
+.info-box p { margin: 0 0 5px 0; color: #5c0000; }
+.info-box ol { margin: 0; padding-left: 20px; }
+
+.block { margin-bottom: 25px; }
 
 label {
     display: block;
@@ -88,74 +90,81 @@ label {
     font-size: 14px;
 }
 
-/* --- Input Field Modern --- */
+.required { color: #eb5757; }
+
+/* --- Input Modern --- */
 input[type="text"], 
 input[type="number"], 
 input[type="tel"], 
 textarea, 
 select {
     width: 100%;
-    padding: 12px 15px;
-    border: 1.5px solid #eee;
-    border-radius: 10px;
-    font-size: 16px; /* Cegah zoom otomatis iPhone */
-    background: #fbfbfb;
-    transition: 0.3s;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px; /* Mencegah auto-zoom iPhone */
+    background: #fdfdfd;
     outline: none;
+    transition: 0.3s;
 }
 
 input:focus, textarea:focus, select:focus {
     border-color: #37352f;
     background: #fff;
-    box-shadow: 0 0 0 4px rgba(55, 53, 47, 0.05);
 }
 
-/* --- Drop Zone --- */
+/* --- Area Upload Foto --- */
 .drop-zone {
-    border: 2px dashed #ddd;
-    border-radius: 12px;
-    padding: 30px 15px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 25px 10px;
     text-align: center;
     background: #fafafa;
-    transition: 0.3s;
+    cursor: pointer;
 }
 
-.drop-zone:hover {
-    border-color: #37352f;
-    background: #f5f5f5;
-}
+.drop-zone__prompt { font-size: 13px; color: #777; }
+.limit { font-size: 11px; color: #999; margin-top: 5px; }
 
-/* --- Tombol Kirim --- */
+/* --- Tombol Submit --- */
 .submit-btn {
     width: 100%;
-    padding: 16px;
-    background: #37352f;
+    padding: 15px;
+    background-color: #37352f;
     color: white;
     border: none;
     border-radius: 10px;
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 10px;
     transition: 0.3s;
 }
 
-.submit-btn:hover {
-    background: #000;
-    transform: translateY(-2px);
-}
+.submit-btn:hover { background-color: #000; }
 
-/* --- Animasi --- */
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Mobile Responsive --- */
+/* --- Pengaturan Responsif HP --- */
 @media (max-width: 480px) {
-    .form-header { padding: 20px 15px; }
-    .profile-logo { width: 85px; height: 85px; }
-    .form-content { padding: 20px 15px; }
-    h1 { font-size: 20px; }
-    input, label, .submit-btn { font-size: 14px; }
+    .glass-card-container {
+        margin-top: 60px; /* Lebih turun sedikit di HP */
+        padding: 15px;
+    }
+    
+    .profile-logo {
+        width: 85px;
+        height: 85px;
+        top: -42px;
+    }
+
+    .tally-wrapper {
+        padding-top: 35px; /* Jarak aman tulisan dari logo di HP */
+    }
+
+    h1 { font-size: 18px; }
+    
+    label { font-size: 13px; }
+
+    input, select, textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
 }
