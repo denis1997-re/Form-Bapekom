@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORMULIR BIODATA BAPEKOM</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="glass-card-container">
+        <div class="profile-logo">
+            <img src="img/Logo 2.png" alt="Logo Bapekom">
+        </div>
+
+        <div class="tally-wrapper">
+            <header class="block">
+                <h1>FORMULIR BIODATA BAPEKOM</h1>
+                
+                <div class="info-box">
+                    <p><strong>INFORMASI PENTING !!</strong></p>
+                    <ol>
+                        <li>Peserta wajib mengisi biodata yang ada untuk keperluan manajemen kantor.</li>
+                        <li>Bagi peserta yang tidak mengisi biodata berpotensi terkena potongan gaji.</li>
+                    </ol>
+                </div>
+            </header>
+
+            <form id="biodata-form">
+                <div class="block">
+                    <label>Masukkan pas foto berwarna atau mengambil foto setengah badan <span class="required">*</span></label>
+                    <div class="drop-zone" id="drop-zone">
+                        <span class="drop-zone__prompt">Click to choose a file or drag here</span>
+                        <input type="file" name="foto" class="drop-zone__input" accept="image/*">
+                        <p class="limit">Size limit: 10 MB</p>
+                    </div>
+                </div>
+
+                <div class="block input-block">
+                    <label>Nama <span class="required">*</span></label>
+                    <input type="text" name="nama" placeholder="Ketik nama lengkap..." required>
+                </div>
+
+                <div class="block input-block">
+                    <label>Alamat <span class="required">*</span></label>
+                    <textarea name="alamat" placeholder="Alamat domisili saat ini..." rows="1" required></textarea>
+                </div>
+
+                <div class="block input-block">
+                    <label>Tempat Tanggal Lahir <span class="required">*</span></label>
+                    <input type="text" name="ttl" placeholder="Contoh: Jakarta, 12 Januari 1990" required>
+                </div>
+
+                <div class="block input-block">
+                    <label>NIK <span class="required">*</span></label>
+                    <input type="number" name="nik" placeholder="16 digit NIK..." required>
+                </div>
+
+                <div class="block input-block">
+                    <label>Nomor BPJS Tenaga Kerja <span class="required">*</span></label>
+                    <input type="text" name="bpjs_tk" required>
+                </div>
+
+                <div class="block input-block">
+                    <label>Nomor BPJS Kesehatan <span class="required">*</span></label>
+                    <input type="text" name="bpjs_kes" required>
+                </div>
+
+                <div class="block input-block">
+                    <label>Nomor KTA (Khusus Security)</label>
+                    <input type="text" name="kta" placeholder="Ketik '-' jika bukan security">
+                </div>
+
+                <div class="block input-block">
+                    <label>Nomor Hp <span class="required">*</span></label>
+                    <input type="tel" name="nohp" placeholder="08..." required>
+                </div>
+
+                <div class="block select-block">
+                    <label>Posisi Pekerjaan <span class="required">*</span></label>
+                    <select name="posisi" required>
+                        <option value="" disabled selected>Pilih Posisi</option>
+                        <option value="Cleaning Service">Cleaning Service</option>
+                        <option value="Satpam">Satpam</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">Submit</button>
+            </form>
+
+            <div id="status-message"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
