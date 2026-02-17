@@ -3,50 +3,47 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    background-attachment: fixed;
     color: #37352f;
-    margin: 0;
-    padding: 20px 15px;
+    line-height: 1.5;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Mulai dari atas agar tidak terpotong di HP */
+    padding: 20px 15px;
     min-height: 100vh;
 }
 
-/* --- Container Utama --- */
-.glass-card-container {
-    background: #ffffff; /* Putih bersih agar teks sangat kontras */
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+.main-container {
     width: 100%;
-    max-width: 550px;
-    overflow: hidden; /* Penting agar header logo rapi */
-    animation: slideUp 0.6s ease-out;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* --- Header Bagian Logo (Area Tersendiri) --- */
-.form-header {
-    background: rgba(255, 255, 255, 0.5);
-    padding: 30px 20px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
+/* --- Area Logo (Di luar kartu agar aman) --- */
+.logo-area {
+    margin-bottom: 20px;
+    z-index: 10;
 }
 
 .profile-logo {
-    width: 100px;
-    height: 100px;
-    background: white;
+    width: 90px;
+    height: 90px;
+    background-color: #fff;
     border-radius: 50%;
-    margin: 0 auto; /* Tengah secara otomatis */
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    border: 3px solid #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 4px solid #fff;
+    overflow: hidden;
 }
 
 .profile-logo img {
@@ -55,19 +52,27 @@ body {
     object-fit: cover;
 }
 
-/* --- Area Konten Form --- */
-.form-content {
-    padding: 30px 25px;
+/* --- Kartu Putih Bersih --- */
+.glass-card-container {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 100%;
+    padding: 30px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
-    margin: 0 0 20px 0;
     text-align: center;
+    margin-bottom: 20px;
     color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
+/* Info Box Redesign */
 .info-box {
     background-color: #fff8f8;
     border-left: 4px solid #ff7070;
@@ -75,6 +80,12 @@ h1 {
     margin-bottom: 30px;
     font-size: 13px;
     border-radius: 4px;
+    color: #5c0000;
+}
+
+.info-box ol {
+    margin-top: 5px;
+    padding-left: 20px;
 }
 
 .block {
@@ -86,9 +97,14 @@ label {
     font-weight: 600;
     margin-bottom: 8px;
     font-size: 14px;
+    color: #333;
 }
 
-/* --- Input Field Modern --- */
+.required {
+    color: #eb5757;
+}
+
+/* Input Styles */
 input[type="text"], 
 input[type="number"], 
 input[type="tel"], 
@@ -96,66 +112,78 @@ textarea,
 select {
     width: 100%;
     padding: 12px 15px;
-    border: 1.5px solid #eee;
-    border-radius: 10px;
-    font-size: 16px; /* Cegah zoom otomatis iPhone */
-    background: #fbfbfb;
-    transition: 0.3s;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px; /* 16px mencegah zoom di HP */
+    background: #fdfdfd;
     outline: none;
+    transition: border 0.3s;
 }
 
 input:focus, textarea:focus, select:focus {
     border-color: #37352f;
     background: #fff;
-    box-shadow: 0 0 0 4px rgba(55, 53, 47, 0.05);
 }
 
-/* --- Drop Zone --- */
+/* Drop Zone */
 .drop-zone {
-    border: 2px dashed #ddd;
-    border-radius: 12px;
-    padding: 30px 15px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 25px 15px;
     text-align: center;
     background: #fafafa;
-    transition: 0.3s;
+    cursor: pointer;
 }
 
-.drop-zone:hover {
-    border-color: #37352f;
-    background: #f5f5f5;
+.drop-zone__prompt {
+    font-size: 13px;
+    color: #666;
 }
 
-/* --- Tombol Kirim --- */
+.limit {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+/* Button */
 .submit-btn {
     width: 100%;
     padding: 16px;
-    background: #37352f;
+    background-color: #37352f;
     color: white;
     border: none;
-    border-radius: 10px;
-    font-weight: 600;
+    border-radius: 8px;
+    font-weight: 700;
     font-size: 16px;
     cursor: pointer;
+    transition: background 0.3s;
     margin-top: 10px;
-    transition: 0.3s;
 }
 
 .submit-btn:hover {
-    background: #000;
-    transform: translateY(-2px);
+    background-color: #000;
 }
 
-/* --- Animasi --- */
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+#status-message {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
 }
 
-/* --- Mobile Responsive --- */
+/* Optimasi Layar Kecil */
 @media (max-width: 480px) {
-    .form-header { padding: 20px 15px; }
-    .profile-logo { width: 85px; height: 85px; }
-    .form-content { padding: 20px 15px; }
-    h1 { font-size: 20px; }
-    input, label, .submit-btn { font-size: 14px; }
+    body {
+        padding: 10px;
+    }
+    .profile-logo {
+        width: 80px;
+        height: 80px;
+    }
+    h1 {
+        font-size: 18px;
+    }
+    .glass-card-container {
+        padding: 25px 15px;
+    }
 }
