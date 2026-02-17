@@ -3,99 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>FORMULIR BIODATA BAPEKOM</title>
+    <title>BIODATA BAPEKOM</title>
     
-    <link rel="stylesheet" href="css/style.css?v=1.2">
+    <link rel="stylesheet" href="css/style.css?v=3.0">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="main-container">
-        <div class="logo-area">
-            <div class="profile-logo">
-                <img src="img/Logo 2.png" alt="Logo Bapekom">
+    <div class="main-wrapper">
+        
+        <header class="logo-section">
+            <div class="profile-avatar">
+                <img src="img/Logo 2.png" alt="Bapekom Logo">
             </div>
-        </div>
+        </header>
 
-        <div class="glass-card-container">
-            <header class="form-header">
-                <h1>FORMULIR BIODATA BAPEKOM</h1>
-                
-                <div class="info-box">
-                    <p><strong>INFORMASI PENTING !!</strong></p>
-                    <ol>
-                        <li>Peserta wajib mengisi biodata untuk keperluan manajemen kantor.</li>
-                        <li>Bagi peserta yang tidak mengisi berpotensi terkena potongan gaji.</li>
-                    </ol>
+        <main class="form-container">
+            
+            <div class="form-intro">
+                <h1>BIODATA BAPEKOM</h1>
+                <div class="warning-alert">
+                    <p><strong>PENTING:</strong> Wajib diisi dengan data asli untuk keperluan administrasi kantor dan penggajian.</p>
                 </div>
-            </header>
+            </div>
 
             <form id="biodata-form">
-                <div class="block">
-                    <label>Pas foto berwarna / Foto setengah badan <span class="required">*</span></label>
-                    <div class="drop-zone" id="drop-zone">
-                        <span class="drop-zone__prompt">Klik untuk pilih foto atau drag ke sini</span>
-                        <input type="file" name="foto" class="drop-zone__input" accept="image/*">
-                        <p class="limit">Maksimal: 10 MB</p>
+                
+                <div class="form-group">
+                    <label>Pas Foto Berwarna <span class="req">*</span></label>
+                    <div class="upload-box" id="drop-zone">
+                        <span class="upload-text">Ketuk untuk Ambil Foto</span>
+                        <input type="file" name="foto" id="foto-input" accept="image/*" required>
+                    </div>
+                    <div id="preview-container"></div>
+                </div>
+
+                <div class="form-group">
+                    <label>Nama Lengkap <span class="req">*</span></label>
+                    <input type="text" name="nama" placeholder="Masukkan nama sesuai KTP" required>
+                </div>
+
+                <div class="form-group">
+                    <label>NIK (16 Digit) <span class="req">*</span></label>
+                    <input type="number" name="nik" placeholder="Contoh: 3201..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Alamat Domisili <span class="req">*</span></label>
+                    <textarea name="alamat" placeholder="Ketik alamat lengkap..." rows="2" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Nomor WhatsApp <span class="req">*</span></label>
+                    <input type="tel" name="nohp" placeholder="0812..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Posisi Pekerjaan <span class="req">*</span></label>
+                    <div class="select-wrapper">
+                        <select name="posisi" required>
+                            <option value="" disabled selected>Pilih salah satu</option>
+                            <option value="Cleaning Service">Cleaning Service</option>
+                            <option value="Satpam">Satpam</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="block">
-                    <label>Nama Lengkap <span class="required">*</span></label>
-                    <input type="text" name="nama" placeholder="Ketik nama sesuai KTP..." required>
+                <div class="action-area">
+                    <button type="submit" class="btn-submit" id="submit-btn">
+                        Kirim Data Sekarang
+                    </button>
+                    <div id="status-message"></div>
                 </div>
 
-                <div class="block">
-                    <label>Alamat Domisili <span class="required">*</span></label>
-                    <textarea name="alamat" placeholder="Alamat saat ini..." rows="1" required></textarea>
-                </div>
-
-                <div class="block">
-                    <label>Tempat Tanggal Lahir <span class="required">*</span></label>
-                    <input type="text" name="ttl" placeholder="Contoh: Jakarta, 12 Jan 1990" required>
-                </div>
-
-                <div class="block">
-                    <label>NIK (16 Digit) <span class="required">*</span></label>
-                    <input type="number" name="nik" placeholder="Masukkan NIK Anda..." required>
-                </div>
-
-                <div class="block">
-                    <label>Nomor BPJS Tenaga Kerja <span class="required">*</span></label>
-                    <input type="text" name="bpjs_tk" placeholder="Masukkan nomor kartu..." required>
-                </div>
-
-                <div class="block">
-                    <label>Nomor BPJS Kesehatan <span class="required">*</span></label>
-                    <input type="text" name="bpjs_kes" placeholder="Masukkan nomor kartu..." required>
-                </div>
-
-                <div class="block">
-                    <label>Nomor KTA (Khusus Security)</label>
-                    <input type="text" name="kta" placeholder="Ketik '-' jika bukan security">
-                </div>
-
-                <div class="block">
-                    <label>Nomor WhatsApp <span class="required">*</span></label>
-                    <input type="tel" name="nohp" placeholder="08..." required>
-                </div>
-
-                <div class="block">
-                    <label>Posisi Pekerjaan <span class="required">*</span></label>
-                    <select name="posisi" required>
-                        <option value="" disabled selected>Pilih Posisi</option>
-                        <option value="Cleaning Service">Cleaning Service</option>
-                        <option value="Satpam">Satpam</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="submit-btn" id="submit-btn">KIRIM DATA</button>
-                <div id="status-message"></div>
             </form>
-        </div>
+        </main>
+
+        <footer class="form-footer">
+            <p>&copy; 2026 Bapekom Manajemen</p>
+        </footer>
+
     </div>
 
     <script src="js/script.js"></script>
