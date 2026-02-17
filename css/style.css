@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
-    box-sizing: border-box; /* Sangat penting agar padding tidak merusak lebar */
+    box-sizing: border-box; /* Pastikan padding dan border tidak menambah lebar elemen */
 }
 
 body {
@@ -11,21 +11,22 @@ body {
     color: #37352f;
     line-height: 1.6;
     margin: 0;
-    padding: 15px; /* Padding luar di HP agar tidak mepet layar */
+    padding: 15px; /* Padding di sekitar body agar form tidak terlalu mepet ke sisi layar */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+    flex-direction: column; /* Atur dalam kolom agar logo dan kartu berurutan */
+    align-items: center; /* Pusatkan secara horizontal */
+    min-height: 100vh; /* Tinggi minimal viewport */
+    overflow-x: hidden; /* Mencegah scroll horizontal */
 }
 
-/* --- Profile Logo --- */
+/* --- Profile Logo Styling --- */
 .profile-logo {
     width: 90px;
     height: 90px;
     background-color: white;
     border-radius: 50%;
-    margin-top: 40px; /* Jarak dari atas layar */
-    margin-bottom: -45px; /* Menumpuk di atas kartu */
+    margin-top: 30px; /* Jarak dari atas layar */
+    margin-bottom: -40px; /* Tarik ke atas untuk menumpuk di atas kartu */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +34,7 @@ body {
     border: 4px solid white;
     overflow: hidden;
     position: relative;
-    z-index: 10;
+    z-index: 10; /* Pastikan logo selalu di atas kartu */
 }
 
 .profile-logo img {
@@ -42,21 +43,23 @@ body {
     object-fit: cover;
 }
 
-/* --- Simplified Glass Card --- */
+/* --- Simplified Glass Card (Form Container) --- */
 .glass-card-container {
-    background: rgba(255, 255, 255, 0.9); /* Lebih pekat agar teks Jelas dibaca */
+    background: rgba(255, 255, 255, 0.9); /* Lebih pekat agar teks JELAS dibaca */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    padding: 60px 25px 30px 25px; /* Top padding besar karena ada logo */
+    /* Atur padding agar ada ruang untuk logo di atas dan konten di bawah */
+    padding: 60px 25px 30px 25px; /* Top padding lebih besar untuk logo */
     max-width: 600px;
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 30px; /* Jarak dari bawah */
 }
 
-/* Hilangkan atau Kosongkan .tally-wrapper di HTML jika ada */
+/* Hapus atau pastikan .tally-wrapper tidak ada di HTML Anda */
+/* Jika tetap ada, set padding dan background-nya menjadi transparan */
 .tally-wrapper {
     background: transparent;
     padding: 0;
@@ -64,9 +67,10 @@ body {
 }
 
 h1 { 
-    font-size: 24px; /* Ukuran lebih pas untuk HP */
+    font-size: 26px; /* Ukuran heading yang lebih pas untuk HP */
     font-weight: 700; 
-    margin-bottom: 15px; 
+    margin-top: 10px; /* Jarak dari atas kartu setelah logo */
+    margin-bottom: 20px; /* Jarak ke elemen di bawahnya */
     text-align: center;
     color: #1a1a1a; 
 }
@@ -81,7 +85,9 @@ h1 {
     color: #5c0000;
 }
 
-.block { margin-bottom: 25px; }
+.block { 
+    margin-bottom: 25px; /* Jarak antar blok input */
+}
 
 label { 
     display: block; 
@@ -91,28 +97,29 @@ label {
     color: #37352f; 
 }
 
-/* Input Styles */
+/* Input, Textarea, Select Styles */
 input[type="text"], 
 input[type="number"], 
 input[type="tel"], 
 textarea, 
 select {
     width: 100%;
-    border: 1px solid #ddd; /* Gunakan border tipis agar rapi di HP */
+    border: 1px solid #ddd;
     border-radius: 8px;
     padding: 12px;
-    font-size: 16px; /* 16px mencegah Zoom otomatis di iPhone */
+    font-size: 16px; /* Penting untuk mencegah zoom otomatis di iOS */
     outline: none;
     background: #fdfdfd;
-    transition: 0.2s;
+    transition: all 0.2s ease-in-out;
 }
 
 input:focus, textarea:focus, select:focus { 
     border-color: #37352f;
     background: #fff;
+    box-shadow: 0 0 0 3px rgba(55, 53, 47, 0.1);
 }
 
-/* File Drop Zone */
+/* Drop Zone for File Upload */
 .drop-zone {
     border: 2px dashed #ccc;
     border-radius: 10px;
@@ -120,31 +127,100 @@ input:focus, textarea:focus, select:focus {
     text-align: center;
     cursor: pointer;
     background: #fafafa;
+    transition: all 0.2s ease-in-out;
 }
 
-.drop-zone:hover { border-color: #37352f; }
+.drop-zone:hover { 
+    border-color: #37352f; 
+    background: #f5f5f5;
+}
 
+.drop-zone__prompt { 
+    font-size: 14px; 
+    color: #757575;
+}
+
+.drop-zone__input { 
+    display: none; 
+}
+
+/* Submit Button */
 .submit-btn {
-    width: 100%; /* Tombol lebar penuh di HP lebih mudah diklik */
+    width: 100%; /* Lebar penuh di HP */
     background-color: #37352f;
     color: white;
     border: none;
-    padding: 16px;
+    padding: 15px; /* Sedikit lebih kecil agar lebih ringkas */
     border-radius: 8px;
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.submit-btn:hover { background-color: #000; }
+.submit-btn:hover { 
+    background-color: #000; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
 
-/* Responsive khusus layar kecil */
+.submit-btn:disabled { 
+    background-color: #ccc; 
+    cursor: not-allowed; 
+    box-shadow: none; 
+    opacity: 0.8;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .glass-card-container {
+        padding: 50px 20px 25px 20px; /* Sesuaikan padding agar logo tetap di atas tapi konten tidak terlalu sempit */
+    }
+    h1 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+    .info-box {
+        margin-bottom: 20px;
+    }
+    .block {
+        margin-bottom: 20px;
+    }
+    label, .drop-zone__prompt {
+        font-size: 13px;
+    }
+    input[type="text"], input[type="number"], input[type="tel"], textarea, select, .submit-btn {
+        font-size: 15px;
+    }
+}
+
 @media (max-width: 480px) {
     body { padding: 10px; }
-    .glass-card-container {
-        padding: 50px 15px 20px 15px;
+    .profile-logo {
+        width: 80px; /* Logo sedikit lebih kecil di layar sangat kecil */
+        height: 80px;
+        margin-bottom: -35px; /* Sesuaikan margin negatif */
     }
-    h1 { font-size: 20px; }
-    input, label { font-size: 14px; }
+    .glass-card-container {
+        padding: 45px 15px 20px 15px; /* Lebih ringkas di layar sangat kecil */
+        border-radius: 12px;
+    }
+    h1 { font-size: 20px; margin-top: 5px; }
+    .info-box { padding: 12px; font-size: 12px; }
+    .block { margin-bottom: 15px; }
+    label { font-size: 13px; }
+    input[type="text"], input[type="number"], input[type="tel"], textarea, select, .submit-btn {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+    .submit-btn { padding: 12px; }
+    .drop-zone { padding: 15px; border-radius: 8px; }
 }
+
+/* --- success.css (Tambahan, jika digabung) --- */
+/* Jika Anda tetap ingin menggabungkan success.css, tempelkan di bawah ini */
+/* Jika tidak, abaikan bagian ini */
+/* .success-container, .success-card, .icon-check, h2, p, .btn-back, @keyframes fadeIn */
+/* (Pastikan Anda sudah punya success.css di folder css/ terpisah) */
